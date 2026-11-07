@@ -75,48 +75,6 @@
         transform-origin: 50% 100%;
       }
       .bar.peak { background: var(--orange); }
-      .year-marks {
-        position: absolute;
-        left: 0;
-        top: 400px;
-        display: flex;
-        align-items: flex-end;
-        gap: 48px;
-        height: 120px;
-      }
-      .mark {
-        position: relative;
-        overflow: visible;
-        flex: 0 0 auto;
-      }
-      .mark path,
-      .mark line,
-      .mark circle,
-      .mark ellipse {
-        fill: none;
-        stroke: var(--orange);
-        stroke-width: 5;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      #run-mark { width: 156px; height: 94px; }
-      #swim-mark { width: 148px; height: 74px; }
-      #bowler-creative {
-        position: relative;
-        flex: 0 0 auto;
-        width: 66px;
-        height: 70px;
-        /* The run mark's box is 94px, but the shoe drawing is 58px of that.
-           A normal bowling pose at this size matches that drawing, and the
-           lift puts the feet on the same line as the sole. */
-        margin-bottom: 25px;
-      }
-      .bowler-frame {
-        position: absolute;
-        inset: 0;
-        width: 66px;
-        height: 70px;
-      }
     </style>
   </head>
   <body>
@@ -134,35 +92,6 @@
           <div class="num">576.3</div>
           <p class="unit">kilometres</p>
           <p id="year-sub" class="quiet">221 sessions · 113.9 hours</p>
-          <div class="year-marks" aria-hidden="true">
-            <svg id="run-mark" class="mark" viewBox="0 0 200 120">
-              <path d="M24 86 H156 Q178 86 176 70 L168 64 H32 Q18 64 20 76 Q20 86 24 86" />
-              <path d="M40 64 V50 Q46 30 70 32 H78 Q88 18 112 18 H142 Q170 22 176 46 L178 62" />
-              <path d="M40 50 Q30 46 32 34 Q40 24 54 30" />
-              <path d="M86 28 L98 16 L114 22" />
-              <path d="M92 42 L112 34" />
-              <path d="M98 52 L122 42" />
-              <path d="M148 36 Q166 42 172 54" />
-            </svg>
-            <svg id="swim-mark" class="mark" viewBox="0 0 176 88">
-              <ellipse cx="48" cy="46" rx="30" ry="22" />
-              <ellipse cx="128" cy="46" rx="30" ry="22" />
-              <path d="M78 46 H98" />
-              <path d="M18 40 C6 28 6 64 20 56" />
-              <path d="M158 40 C170 28 170 64 156 56" />
-            </svg>
-            <div id="bowler-creative" aria-hidden="true">
-              <img class="bowler-frame" src="assets/bowler/f0.png" alt="" />
-              <img class="bowler-frame" src="assets/bowler/f1.png" alt="" />
-              <img class="bowler-frame" src="assets/bowler/f2.png" alt="" />
-              <img class="bowler-frame" src="assets/bowler/f3.png" alt="" />
-              <img class="bowler-frame" src="assets/bowler/f4.png" alt="" />
-              <img class="bowler-frame" src="assets/bowler/f5.png" alt="" />
-              <img class="bowler-frame" src="assets/bowler/f6.png" alt="" />
-              <img class="bowler-frame" src="assets/bowler/f7.png" alt="" />
-              <img class="bowler-frame" src="assets/bowler/f8.png" alt="" />
-            </div>
-          </div>
         </div>
       </div>
 
@@ -261,33 +190,12 @@
       tl.fromTo("#month-hero", { xPercent: 10, autoAlpha: 0.35 }, { xPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 17.6);
       
       // </seams:auto>
-      gsap.set("#run-mark", { x: 64, rotation: -16, opacity: 0, transformOrigin: "18% 82%" });
-      gsap.set("#swim-mark", { y: -40, opacity: 0 });
-      gsap.set("#bowler-creative", { x: 36, opacity: 0 });
       gsap.set("#year-sub", { opacity: 0 });
       gsap.set("#run-a, #run-b, #run-c", { opacity: 0 });
       gsap.set("#swim-a, #swim-b", { opacity: 0 });
       gsap.set("#m1, #m2, #m3, #m4, #m5, #m6, #m7, #m8, #m9, #m10, #m11", { scaleY: 0 });
 
       tl.fromTo("#year-sub", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 1.1);
-
-      tl.to("#run-mark", { x: 0, rotation: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.45);
-      tl.to("#swim-mark", { y: 0, opacity: 1, duration: 0.42, ease: "power3.out" }, 0.7);
-      tl.to("#bowler-creative", { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.55);
-
-      // Bowling cycle from the supplied GIF: 9 frames × 140ms. Stepped with
-      // timeline sets so a render seek (which suppresses callbacks) still lands
-      // on the frame for that time. Holds through the opening card, then hides.
-      const bowlerFrames = gsap.utils.toArray(".bowler-frame");
-      const bowlerStep = 0.14;
-      const bowlerSteps = Math.ceil(4.4 / bowlerStep);
-      gsap.set(bowlerFrames, { autoAlpha: 0 });
-      for (let step = 0; step < bowlerSteps; step++) {
-        const at = Math.round(step * bowlerStep * 1000) / 1000;
-        tl.set(bowlerFrames, { autoAlpha: 0 }, at);
-        tl.set(bowlerFrames[step % bowlerFrames.length], { autoAlpha: 1 }, at);
-      }
-      tl.set(bowlerFrames, { autoAlpha: 0 }, 4.4);
 
       tl.fromTo("#run-a", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 5.3);
       tl.fromTo("#run-b", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 5.85);
