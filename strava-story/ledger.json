@@ -1,0 +1,33 @@
+{
+  "fps": 30,
+  "seams": [
+    {
+      "id": "year→run",
+      "cut": 4.4,
+      "technique": "cut-the-curve LEFT",
+      "exit": { "selector": "#year-hero", "axis": "x", "dir": -1 },
+      "entry": { "selector": "#run-hero", "axis": "x", "dir": -1 }
+    },
+    {
+      "id": "run→swim",
+      "cut": 9.2,
+      "technique": "cut-the-curve LEFT",
+      "exit": { "selector": "#run-hero", "axis": "x", "dir": -1 },
+      "entry": { "selector": "#swim-hero", "axis": "x", "dir": -1 }
+    },
+    {
+      "id": "swim→workout",
+      "cut": 13.6,
+      "technique": "cut-the-curve LEFT",
+      "exit": { "selector": "#swim-hero", "axis": "x", "dir": -1 },
+      "entry": { "selector": "#work-hero", "axis": "x", "dir": -1 }
+    },
+    {
+      "id": "workout→months",
+      "cut": 17.6,
+      "technique": "cut-the-curve LEFT",
+      "exit": { "selector": "#work-hero", "axis": "x", "dir": -1 },
+      "entry": { "selector": "#month-hero", "axis": "x", "dir": -1 }
+    }
+  ]
+}

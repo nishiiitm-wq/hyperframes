@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #071018;
+        --paper: #f4f0e8;
+        --mist: #93a7ba;
+        --orange: #fc4c02;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        background: var(--ground);
+        font-family: Inter, sans-serif;
+        color: var(--paper);
+      }
+      .beat { position: absolute; inset: 0; }
+      .hero { position: absolute; left: 88px; right: 150px; top: 360px; }
+      .eyebrow {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--orange);
+      }
+      .num {
+        margin-top: 12px;
+        font-family: Oswald, sans-serif;
+        font-weight: 700;
+        font-size: 220px;
+        line-height: 0.86;
+        letter-spacing: -0.04em;
+        font-variant-numeric: tabular-nums;
+      }
+      .num.compact { font-size: 148px; }
+      .unit { margin-top: 18px; font-size: 40px; font-weight: 700; }
+      .quiet { margin-top: 22px; font-size: 32px; color: var(--mist); }
+      .stack { margin-top: 28px; }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 16px 0;
+        border-top: 2px solid #1c2c3a;
+        font-size: 34px;
+      }
+      .row b {
+        font-family: Oswald, sans-serif;
+        font-size: 52px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+      .bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 16px;
+        height: 240px;
+        margin-top: 36px;
+      }
+      .bar {
+        width: 48px;
+        background: #1c2c3a;
+        transform-origin: 50% 100%;
+      }
+      .bar.peak { background: var(--orange); }
+      .year-marks {
+        position: absolute;
+        left: 0;
+        top: 400px;
+        display: flex;
+        align-items: flex-end;
+        gap: 48px;
+        height: 120px;
+      }
+      .mark {
+        position: relative;
+        overflow: visible;
+        flex: 0 0 auto;
+      }
+      .mark path,
+      .mark line,
+      .mark circle,
+      .mark ellipse {
+        fill: none;
+        stroke: var(--orange);
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      #run-mark { width: 156px; height: 94px; }
+      #swim-mark { width: 148px; height: 74px; }
+      #bowler-creative {
+        position: absolute;
+        right: -28px;
+        top: 40px;
+        width: 89px;
+        height: 94px;
+      }
+      .bowler-frame {
+        position: absolute;
+        inset: 0;
+        width: 89px;
+        height: 94px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="22"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div id="el-year" class="clip beat" data-start="0" data-duration="4.4" data-track-index="1">
+        <div id="year-hero" class="hero">
+          <div id="bowler-creative" aria-hidden="true">
+            <img class="bowler-frame" src="assets/bowler/f0.png" alt="" />
+            <img class="bowler-frame" src="assets/bowler/f1.png" alt="" />
+            <img class="bowler-frame" src="assets/bowler/f2.png" alt="" />
+            <img class="bowler-frame" src="assets/bowler/f3.png" alt="" />
+            <img class="bowler-frame" src="assets/bowler/f4.png" alt="" />
+            <img class="bowler-frame" src="assets/bowler/f5.png" alt="" />
+            <img class="bowler-frame" src="assets/bowler/f6.png" alt="" />
+            <img class="bowler-frame" src="assets/bowler/f7.png" alt="" />
+            <img class="bowler-frame" src="assets/bowler/f8.png" alt="" />
+          </div>
+          <p class="eyebrow">2026 so far</p>
+          <div class="num">576.3</div>
+          <p class="unit">kilometres</p>
+          <p id="year-sub" class="quiet">221 sessions · 113.9 hours</p>
+          <div class="year-marks" aria-hidden="true">
+            <svg id="run-mark" class="mark" viewBox="0 0 200 120">
+              <path d="M24 86 H156 Q178 86 176 70 L168 64 H32 Q18 64 20 76 Q20 86 24 86" />
+              <path d="M40 64 V50 Q46 30 70 32 H78 Q88 18 112 18 H142 Q170 22 176 46 L178 62" />
+              <path d="M40 50 Q30 46 32 34 Q40 24 54 30" />
+              <path d="M86 28 L98 16 L114 22" />
+              <path d="M92 42 L112 34" />
+              <path d="M98 52 L122 42" />
+              <path d="M148 36 Q166 42 172 54" />
+            </svg>
+            <svg id="swim-mark" class="mark" viewBox="0 0 176 88">
+              <ellipse cx="48" cy="46" rx="30" ry="22" />
+              <ellipse cx="128" cy="46" rx="30" ry="22" />
+              <path d="M78 46 H98" />
+              <path d="M18 40 C6 28 6 64 20 56" />
+              <path d="M158 40 C170 28 170 64 156 56" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div id="el-run" class="clip beat" data-start="4.4" data-duration="4.8" data-track-index="2">
+        <div id="run-hero" class="hero">
+          <p class="eyebrow">Run</p>
+          <div class="num" id="run-km">504.5</div>
+          <p class="unit">kilometres</p>
+          <div class="stack">
+            <div class="row" id="run-a"><span>Sessions</span><b>115</b></div>
+            <div class="row" id="run-b"><span>Moving</span><b>47.6 h</b></div>
+            <div class="row" id="run-c"><span>Elevation</span><b>609 m</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="el-swim" class="clip beat" data-start="9.2" data-duration="4.4" data-track-index="3">
+        <div id="swim-hero" class="hero">
+          <p class="eyebrow">Swim</p>
+          <div class="num">71.9</div>
+          <p class="unit">kilometres</p>
+          <div class="stack">
+            <div class="row" id="swim-a"><span>Sessions</span><b>83</b></div>
+            <div class="row" id="swim-b"><span>Moving</span><b>36.8 h</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="el-work" class="clip beat" data-start="13.6" data-duration="4" data-track-index="4">
+        <div id="work-hero" class="hero">
+          <p class="eyebrow">Cricket</p>
+          <div class="num">23</div>
+          <p class="unit">sessions · 29.5 hours</p>
+        </div>
+      </div>
+
+      <div id="el-months" class="clip beat" data-start="17.6" data-duration="4.4" data-track-index="5">
+        <div id="month-hero" class="hero">
+          <p class="eyebrow">Sessions</p>
+          <div class="num">33</div>
+          <p class="unit">in July, the busiest month</p>
+          <div class="bars" id="bars">
+            <div class="bar" id="m1" style="height: 93px"></div>
+            <div class="bar" id="m2" style="height: 120px"></div>
+            <div class="bar" id="m3" style="height: 167px"></div>
+            <div class="bar" id="m4" style="height: 80px"></div>
+            <div class="bar" id="m5" style="height: 73px"></div>
+            <div class="bar" id="m6" style="height: 180px"></div>
+            <div class="bar peak" id="m7" style="height: 220px"></div>
+            <div class="bar" id="m8" style="height: 167px"></div>
+            <div class="bar" id="m9" style="height: 153px"></div>
+            <div class="bar" id="m10" style="height: 160px"></div>
+            <div class="bar" id="m11" style="height: 60px"></div>
+          </div>
+          <p class="quiet">Jan through 7 Nov · 14 18 25 12 11 27 33 25 23 24 9</p>
+        </div>
+      </div>
+
+      <!--
+        Soundtrack: add manually later. Do not render a stand-in into the file.
+        Track: Energetic Sports
+        Artist: DELOSound
+        Source: https://pixabay.com/music/electro-energetic-sports-471133/
+        License: Pixabay Content License. Download the audio and the license certificate from that page.
+        When ready, put the file in assets/ and add an audio clip with id, class="clip", data-start="0", data-duration="22", and data-volume.
+      -->
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+
+
+      // <seams:auto> — generated by seam-stamp.mjs from ledger.json; do not hand-edit.
+      // Regenerate: node <motion-doctrine>/scripts/seam-stamp.mjs --ledger ledger.json --write index.html
+      gsap.set("#year-hero", { autoAlpha: 1, xPercent: 0, yPercent: 0, scale: 1, filter: "blur(0px)", transformOrigin: "50% 50%" });
+      gsap.set(["#run-hero","#swim-hero","#work-hero","#month-hero"], { autoAlpha: 0, xPercent: 0, yPercent: 0, scale: 1, filter: "blur(0px)", transformOrigin: "50% 50%" });
+      
+      // SEAM — year→run : cut-the-curve LEFT (cut @4.4)
+      tl.to("#year-hero", { xPercent: -12, autoAlpha: 0, duration: 0.34, ease: "power3.in" }, 4.06);
+      tl.set("#year-hero", { autoAlpha: 0 }, 4.4);
+      tl.fromTo("#run-hero", { xPercent: 10, autoAlpha: 0.35 }, { xPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 4.4);
+      
+      // SEAM — run→swim : cut-the-curve LEFT (cut @9.2)
+      tl.to("#run-hero", { xPercent: -12, autoAlpha: 0, duration: 0.34, ease: "power3.in" }, 8.86);
+      tl.set("#run-hero", { autoAlpha: 0 }, 9.2);
+      tl.fromTo("#swim-hero", { xPercent: 10, autoAlpha: 0.35 }, { xPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 9.2);
+      
+      // SEAM — swim→workout : cut-the-curve LEFT (cut @13.6)
+      tl.to("#swim-hero", { xPercent: -12, autoAlpha: 0, duration: 0.34, ease: "power3.in" }, 13.26);
+      tl.set("#swim-hero", { autoAlpha: 0 }, 13.6);
+      tl.fromTo("#work-hero", { xPercent: 10, autoAlpha: 0.35 }, { xPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 13.6);
+      
+      // SEAM — workout→months : cut-the-curve LEFT (cut @17.6)
+      tl.to("#work-hero", { xPercent: -12, autoAlpha: 0, duration: 0.34, ease: "power3.in" }, 17.26);
+      tl.set("#work-hero", { autoAlpha: 0 }, 17.6);
+      tl.fromTo("#month-hero", { xPercent: 10, autoAlpha: 0.35 }, { xPercent: 0, autoAlpha: 1, duration: 0.42, ease: "power4.out", immediateRender: false }, 17.6);
+      
+      // </seams:auto>
+      gsap.set("#run-mark", { x: 64, rotation: -16, opacity: 0, transformOrigin: "18% 82%" });
+      gsap.set("#swim-mark", { y: -40, opacity: 0 });
+      gsap.set("#bowler-creative", { x: 36, opacity: 0 });
+      gsap.set("#year-sub", { opacity: 0 });
+      gsap.set("#run-a, #run-b, #run-c", { opacity: 0 });
+      gsap.set("#swim-a, #swim-b", { opacity: 0 });
+      gsap.set("#m1, #m2, #m3, #m4, #m5, #m6, #m7, #m8, #m9, #m10, #m11", { scaleY: 0 });
+
+      tl.fromTo("#year-sub", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 1.1);
+
+      tl.to("#run-mark", { x: 0, rotation: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.45);
+      tl.to("#swim-mark", { y: 0, opacity: 1, duration: 0.42, ease: "power3.out" }, 0.7);
+      tl.to("#bowler-creative", { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.55);
+
+      // Bowling cycle from the supplied GIF: 9 frames × 140ms. Stepped with
+      // timeline sets so a render seek (which suppresses callbacks) still lands
+      // on the frame for that time. Holds through the opening card, then hides.
+      const bowlerFrames = gsap.utils.toArray(".bowler-frame");
+      const bowlerStep = 0.14;
+      const bowlerSteps = Math.ceil(4.4 / bowlerStep);
+      gsap.set(bowlerFrames, { autoAlpha: 0 });
+      for (let step = 0; step < bowlerSteps; step++) {
+        const at = Math.round(step * bowlerStep * 1000) / 1000;
+        tl.set(bowlerFrames, { autoAlpha: 0 }, at);
+        tl.set(bowlerFrames[step % bowlerFrames.length], { autoAlpha: 1 }, at);
+      }
+      tl.set(bowlerFrames, { autoAlpha: 0 }, 4.4);
+
+      tl.fromTo("#run-a", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 5.3);
+      tl.fromTo("#run-b", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 5.85);
+      tl.fromTo("#run-c", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 6.4);
+
+      tl.fromTo("#swim-a", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 10.0);
+      tl.fromTo("#swim-b", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 10.55);
+
+      tl.fromTo(
+        "#m1, #m2, #m3, #m4, #m5, #m6, #m7, #m8, #m9, #m10, #m11",
+        { scaleY: 0 },
+        { scaleY: 1, duration: 0.45, stagger: 0.06, ease: "power2.out" },
+        18.15,
+      );
+
+      tl.seek(0);
+    </script>
+  </body>
+</html>
