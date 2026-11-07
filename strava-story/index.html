@@ -102,17 +102,20 @@
       #run-mark { width: 156px; height: 94px; }
       #swim-mark { width: 148px; height: 74px; }
       #bowler-creative {
-        position: absolute;
-        right: -28px;
-        top: 40px;
-        width: 89px;
-        height: 94px;
+        position: relative;
+        flex: 0 0 auto;
+        width: 66px;
+        height: 70px;
+        /* The run mark's box is 94px, but the shoe drawing is 58px of that.
+           A normal bowling pose at this size matches that drawing, and the
+           lift puts the feet on the same line as the sole. */
+        margin-bottom: 25px;
       }
       .bowler-frame {
         position: absolute;
         inset: 0;
-        width: 89px;
-        height: 94px;
+        width: 66px;
+        height: 70px;
       }
     </style>
   </head>
@@ -127,17 +130,6 @@
     >
       <div id="el-year" class="clip beat" data-start="0" data-duration="4.4" data-track-index="1">
         <div id="year-hero" class="hero">
-          <div id="bowler-creative" aria-hidden="true">
-            <img class="bowler-frame" src="assets/bowler/f0.png" alt="" />
-            <img class="bowler-frame" src="assets/bowler/f1.png" alt="" />
-            <img class="bowler-frame" src="assets/bowler/f2.png" alt="" />
-            <img class="bowler-frame" src="assets/bowler/f3.png" alt="" />
-            <img class="bowler-frame" src="assets/bowler/f4.png" alt="" />
-            <img class="bowler-frame" src="assets/bowler/f5.png" alt="" />
-            <img class="bowler-frame" src="assets/bowler/f6.png" alt="" />
-            <img class="bowler-frame" src="assets/bowler/f7.png" alt="" />
-            <img class="bowler-frame" src="assets/bowler/f8.png" alt="" />
-          </div>
           <p class="eyebrow">2026 so far</p>
           <div class="num">576.3</div>
           <p class="unit">kilometres</p>
@@ -159,6 +151,17 @@
               <path d="M18 40 C6 28 6 64 20 56" />
               <path d="M158 40 C170 28 170 64 156 56" />
             </svg>
+            <div id="bowler-creative" aria-hidden="true">
+              <img class="bowler-frame" src="assets/bowler/f0.png" alt="" />
+              <img class="bowler-frame" src="assets/bowler/f1.png" alt="" />
+              <img class="bowler-frame" src="assets/bowler/f2.png" alt="" />
+              <img class="bowler-frame" src="assets/bowler/f3.png" alt="" />
+              <img class="bowler-frame" src="assets/bowler/f4.png" alt="" />
+              <img class="bowler-frame" src="assets/bowler/f5.png" alt="" />
+              <img class="bowler-frame" src="assets/bowler/f6.png" alt="" />
+              <img class="bowler-frame" src="assets/bowler/f7.png" alt="" />
+              <img class="bowler-frame" src="assets/bowler/f8.png" alt="" />
+            </div>
           </div>
         </div>
       </div>
