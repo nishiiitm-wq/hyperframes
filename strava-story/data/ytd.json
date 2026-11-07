@@ -1,0 +1,16 @@
+{
+  "source": "Strava activities CSV, year 2026 through 7 November",
+  "activities": 221,
+  "distance_km": 576.3,
+  "moving_hours": 113.9,
+  "elevation_m": 609,
+  "types": {
+    "Run": { "count": 115, "distance_km": 504.5, "moving_hours": 47.6, "elevation_m": 609 },
+    "Swim": { "count": 83, "distance_km": 71.9, "moving_hours": 36.8, "elevation_m": 0 },
+    "Cricket": { "count": 23, "distance_km": 0, "moving_hours": 29.5, "elevation_m": 0 }
+  },
+  "sessions_by_month": [14, 18, 25, 12, 11, 27, 33, 25, 23, 24, 9],
+  "peak_month": "July",
+  "peak_sessions": 33,
+  "routes": "No FIT, GPX, or TCX files were in the upload. The CSV has filenames only, so no route is drawn."
+}

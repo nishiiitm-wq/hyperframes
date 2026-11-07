@@ -1,0 +1,22 @@
+{
+  "source": "Strava archive export, activities CSV uploaded with this session",
+  "activity_id": "20890103767",
+  "name": "Morning Run",
+  "type": "Run",
+  "date": "2026-11-07T02:13:30",
+  "distance_m": 4033.8,
+  "moving_time_s": 1319,
+  "elapsed_time_s": 1323,
+  "average_speed_mps": 3.058,
+  "pace": "5:27 /km",
+  "elevation_gain_m": 6.0,
+  "average_heart_rate": 168,
+  "max_heart_rate": 181,
+  "gear": "Nike Wildhorse 10",
+  "week": {
+    "runs": 4,
+    "distance_km": 16.1,
+    "dates": ["2026-11-03", "2026-11-04", "2026-11-05", "2026-11-07"]
+  },
+  "missing": "No FIT or GPX files were in the upload, so the film does not draw a route."
+}
